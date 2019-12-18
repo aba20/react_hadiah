@@ -12,5 +12,5 @@ export const deleteGiftByID = function(id) {
 }
 
 export const updateGiftByID = function(id) {
-  return axios.update(`${apiUrl}/gifts/${id}`);
+  return axios.patch(`${apiUrl}/gifts/${id}`);
 }
