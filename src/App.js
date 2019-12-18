@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import './App.scss'
-import { Route } from 'react-router-dom'
-
-import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
-import Header from './header/Header'
-import SignUp from './auth/components/SignUp'
-import SignIn from './auth/components/SignIn'
-import SignOut from './auth/components/SignOut'
-import ChangePassword from './auth/components/ChangePassword'
-import AlertDismissible from './auth/components/AlertDismissible'
+import React, { Component } from 'react';
+import './App.scss';
+import { Route } from 'react-router-dom';
+import AuthenticatedRoute from './auth/components/AuthenticatedRoute';
+import Header from './header/Header';
+import SignUp from './auth/components/SignUp';
+import SignIn from './auth/components/SignIn';
+import SignOut from './auth/components/SignOut';
+import ChangePassword from './auth/components/ChangePassword';
+import AlertDismissible from './auth/components/AlertDismissible';
+import Gifts from './gifts/components/gifts';
 
 class App extends Component {
   constructor () {
@@ -16,9 +16,11 @@ class App extends Component {
 
     this.state = {
       user: null,
-      alerts: []
-    }
-  }
+      alerts: [],
+      gifts: []
+    };
+  };
+
 
   setUser = user => this.setState({ user })
 
@@ -27,6 +29,9 @@ class App extends Component {
   alert = (message, type) => {
     this.setState({ alerts: [...this.state.alerts, { message, type }] })
   }
+  setGifts = (gifts) => {
+    this.setState({ gifts: gifts });
+  };
 
   render () {
     const { alerts, user } = this.state
@@ -51,7 +56,18 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
         </main>
+        <div className="App">
+        <header className="App-header">
+          <p>
+            Welcome to Hadia!
+          </p>
+        </header>
+        <Gifts gifts={this.state.gifts} 
+            setGifts={this.setGifts} />
+      </div>
+        
       </React.Fragment>
+      
     )
   }
 }
