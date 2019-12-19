@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class Gift extends React.Component {
@@ -13,15 +14,16 @@ class Gift extends React.Component {
 
   render() {
     return (
-      <div className="gift">
+      <div class="card">
         <img src={this.props.image}/>
+        <div>
         <h2>{this.props.title}</h2>
-        <sub>{this.props.description}</sub>
-        <p>
-          
-        </p>
-        <a href="#" onClick={this.deleteGift}> Delete </a>
-        <a href="#" onClick={this.updateGift}> Update </a>
+        <sub class="card-title">{this.props.description}</sub>
+       <div >
+         <a class="card-button" href="#" onClick={this.deleteGift}> Delete </a>
+         <a class="card-button" href="#" onClick={this.updateGift}> Update </a>
+        </div>
+      </div>
       </div>
     );
   }

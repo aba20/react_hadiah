@@ -9,6 +9,8 @@ import SignOut from './auth/components/SignOut';
 import ChangePassword from './auth/components/ChangePassword';
 import AlertDismissible from './auth/components/AlertDismissible';
 import Gifts from './gifts/components/gifts';
+import CreateGift from './gifts/components/createGift';
+
 
 class App extends Component {
   constructor () {
@@ -43,6 +45,7 @@ class App extends Component {
           <AlertDismissible key={index} variant={alert.type} message={alert.message} />
         ))}
         <main className="container">
+
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -62,10 +65,13 @@ class App extends Component {
             Welcome to Hadia!
           </p>
         </header>
-        <Gifts gifts={this.state.gifts} 
+
+      </div> 
+      <Gifts gifts={this.state.gifts} 
             setGifts={this.setGifts} />
-      </div>
-        
+      <Route path='/createGift' render={() => (
+            <CreateGift alert={this.alert} setUser={this.setUser} />
+          )} />
       </React.Fragment>
       
     )
